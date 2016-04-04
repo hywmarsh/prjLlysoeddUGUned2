@@ -109,7 +109,26 @@
         If NiferGydaSgorIsaf = 1 Then ' Enillydd clir
             lblLlysBuddugol.Text = " Y llys buddugol yw " & EnwauLlysoedd(llysGydaSorIsaf(0))
         Else ' mwy nag un llys gyda'r un sgor
-            Cyfrifnol(llysGydaSorIsaf, NiferGydaSgorIsaf)
+            'Gwirio os oes ennillydd oherwydd mwy o safleoedd cyntaf 
+            'Dim safle As Integer = 0
+            Call Cyfrifnol(llysGydaSorIsaf, NiferGydaSgorIsaf, SafleoeddLlys, 0)
+            If NiferGydaSgorIsaf = 1 Then 'un llys sydd a'r nifer mwyaf oiafle 1
+                lblLlysBuddugol.Text = " Y llys buddugol yw " & EnwauLlysoedd(llysGydaSorIsaf(0))
+            Else ' mwy nag un llys gyda'r un sgor
+                'Gwirio os oes ennillydd oherwydd mwy o ail safleoedd 
+                Cyfrifnol(llysGydaSorIsaf, NiferGydaSgorIsaf, SafleoeddLlys, 1)
+                If NiferGydaSgorIsaf = 1 Then 'un llys sydd a'r nifer mwyaf oiafle 1
+                    lblLlysBuddugol.Text = " Y llys buddugol yw " & EnwauLlysoedd(llysGydaSorIsaf(0))
+                Else ' mwy nag un llys gyda'r un sgor
+                    'Gwirio os oes ennillydd oherwydd mwy o drydydd safleoedd 
+                    Cyfrifnol(llysGydaSorIsaf, NiferGydaSgorIsaf, SafleoeddLlys, 3)
+                    If NiferGydaSgorIsaf = 1 Then 'un llys sydd a'r nifer mwyaf oiafle 1
+                        lblLlysBuddugol.Text = " Y llys buddugol yw " & EnwauLlysoedd(llysGydaSorIsaf(0))
+                    Else ' mwy nag un llys gyda'r un sgor
+                        lblLlysBuddugol.Text = "Dim ennillydd clir"
+                    End If
+                End If
+            End If
         End If
     End Sub
 
@@ -125,8 +144,30 @@
         Next
     End Sub
 
-    Private Sub Cyfrifnol(ByVal llysoeddCyfartal As Object, ByVal Nifer As Integer)
+    Private Sub Cyfrifnol(ByRef llysoeddCyfartal As Object, ByRef Nifer As Integer, ByVal safleoeddllys As Object, ByVal safle As Object)
         'Nifer gyda'r un sgor
+        'Darganfod y gwerth isaf yng ngholofn safle o'r arae safleoeddllys, ar gyfer y llysoedd sydd ynllysoeddcyfartal
 
+        Dim llys As Integer 'rheoli'r ddolen
+        Dim mwyaf As Integer = -1 'nifer isaf 
+        Dim llysoeddmwyaf(NiferLlysoedd) As Integer ' llysoedd sydd wedi cael y nifer mwyaf o safleoedd
+        Dim NiferNewydd As Integer = 0 'Nifer o llysoedd sydd wedi cael y nifer mwyaf o safle yma
+
+        'Darganfod y nifer mwyaf o safleoedd
+        For llys = 0 To Nifer - 1
+            If safleoeddllys(llysoeddCyfartal(llys), safle) > mwyaf Then ' mwyaf newydd
+                mwyaf = safleoeddllys(llysoeddCyfartal(llys), safle) 'gwerth mwyaf newydd
+            End If
+        Next
+        'Darganfod  rhif(au) y llys(oedd) sydd wedi cael y nifer mwyaf o safleoedd
+        For llys = 0 To Nifer - 1
+            If safleoeddllys(llysoeddCyfartal(llys), safle) = mwyaf Then ' mwyaf newydd
+                llysoeddmwyaf(llys) = llysoeddCyfartal(llys) 'gwerth mwyaf newydd
+                NiferNewydd = NiferNewydd + 1 'Ychwanegu 1 at y nifer sydd wedi cael y nifer mwyaf o safle
+            End If
+        Next
+        'Newid y gwerthoedd ar gyfer y rhestr o lysoedd sy'n gyfartal a'r nifer
+        llysoeddCyfartal = llysoeddmwyaf
+        Nifer = NiferNewydd
     End Sub
 End Class
