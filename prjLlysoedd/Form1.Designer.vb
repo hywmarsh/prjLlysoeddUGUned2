@@ -35,6 +35,7 @@ Partial Class Form1
         Me.lblCanlyniadauDrosDro = New System.Windows.Forms.Label()
         Me.lblSgorLlysoedd = New System.Windows.Forms.Label()
         Me.lblLlysBuddugol = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'lblDewi
@@ -146,11 +147,21 @@ Partial Class Form1
         Me.lblLlysBuddugol.TabIndex = 12
         Me.lblLlysBuddugol.Text = "Label1"
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(432, 42)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(39, 13)
+        Me.Label1.TabIndex = 13
+        Me.Label1.Text = "Label1"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(456, 342)
+        Me.ClientSize = New System.Drawing.Size(578, 342)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.lblLlysBuddugol)
         Me.Controls.Add(Me.lblSgorLlysoedd)
         Me.Controls.Add(Me.lblCanlyniadauDrosDro)
@@ -183,5 +194,6 @@ Partial Class Form1
     Friend WithEvents lblCanlyniadauDrosDro As System.Windows.Forms.Label
     Friend WithEvents lblSgorLlysoedd As System.Windows.Forms.Label
     Friend WithEvents lblLlysBuddugol As System.Windows.Forms.Label
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 
 End Class
