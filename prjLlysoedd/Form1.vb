@@ -182,7 +182,7 @@
         Dim i As Integer
         Label1.Text = "ennillwyr"
         For i = 0 To NiferLlysoedd - 1
-            Label1.Text = Label1.Text & llysoedd(i) & vbCrLf
+            Label1.Text = Label1.Text & llysoedd(llysGydaSorIsaf(i)) & vbCrLf
         Next
     End Sub
 End Class
