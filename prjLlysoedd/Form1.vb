@@ -1,4 +1,5 @@
-﻿Public Class Form1
+﻿Imports System.IO
+Public Class Form1
     'Gweerthoedd eang sy'n cael eu defnyddio mewn mwy nag un modiwl
     Const NiferLlysoedd = 4 'nifer o lysoedd
     Const NiferSafleoedd = 4 'nifer posib o safleoedd ym mhod cystadleuaeth
@@ -81,7 +82,7 @@
         'Darganfod y llys buddugol
 
         Dim NiferGydaSgorIsaf As Integer = 0
-      
+
         'Arddangos sgor pob llys
         arddangosSgor(CyfanswmSgorLlys)
 
@@ -112,19 +113,19 @@
         Else ' mwy nag un llys gyda'r un sgor
             'Gwirio os oes ennillydd oherwydd mwy o safleoedd cyntaf 
             displayTemp(EnwauLlysoedd, NiferGydaSgorIsaf)
-            Cyfrifnol(NiferGydaSgorIsaf, 0)
+            CyfrifNol(NiferGydaSgorIsaf, 0)
             If NiferGydaSgorIsaf = 1 Then 'un llys sydd a'r nifer mwyaf oiafle 1
                 lblLlysBuddugol.Text = " Y llys buddugol yw " & EnwauLlysoedd(llysGydaSorIsaf(0))
             Else ' mwy nag un llys gyda'r un sgor
                 'Gwirio os oes ennillydd oherwydd mwy o ail safleoedd 
                 displayTemp(EnwauLlysoedd, NiferGydaSgorIsaf)
-                Cyfrifnol(NiferGydaSgorIsaf, 1)
+                CyfrifNol(NiferGydaSgorIsaf, 1)
                 If NiferGydaSgorIsaf = 1 Then 'un llys sydd a'r nifer mwyaf oiafle 1
                     lblLlysBuddugol.Text = " Y llys buddugol yw " & EnwauLlysoedd(llysGydaSorIsaf(0))
                 Else ' mwy nag un llys gyda'r un sgor
                     'Gwirio os oes ennillydd oherwydd mwy o drydydd safleoedd 
                     displayTemp(EnwauLlysoedd, NiferGydaSgorIsaf)
-                    Cyfrifnol(NiferGydaSgorIsaf, 2)
+                    CyfrifNol(NiferGydaSgorIsaf, 2)
                     If NiferGydaSgorIsaf = 1 Then 'un llys sydd a'r nifer mwyaf oiafle 1
                         lblLlysBuddugol.Text = " Y llys buddugol yw " & EnwauLlysoedd(llysGydaSorIsaf(0))
                     Else ' mwy nag un llys gyda'r un sgor
